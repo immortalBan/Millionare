@@ -25,11 +25,6 @@ public class User {
         this.birthday = birthday;
     }
 
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "time_created")
-    private Date timeCreated;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -46,6 +41,11 @@ public class User {
 
     @Column(name="birthday",length = 60,nullable = false)
     private LocalDate birthday;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "time_created")
+    private Date timeCreated;
 
     @Override
     public String toString() {

@@ -32,4 +32,8 @@ public class Game {
     @Column(name = "points", nullable = false)
     private Long points;
 
+    @ManyToOne
+    @JoinColumn(name="user_id",nullable = false)
+    private User user;
+
 }
