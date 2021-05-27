@@ -34,8 +34,8 @@ public class GameQuestionServiceImpl implements GameQuestionService {
         if (read(id) != null) {
             GameQuestion newGameQuestion = new GameQuestion();
             newGameQuestion.setId(id);
-            newGameQuestion.setGame(gameQuestion.getGame());
-            newGameQuestion.setQuestion(gameQuestion.getQuestion());
+            newGameQuestion.setGameId(gameQuestion.getGameId());
+            newGameQuestion.setQuestionId(gameQuestion.getQuestionId());
 
             return true;
         } else {

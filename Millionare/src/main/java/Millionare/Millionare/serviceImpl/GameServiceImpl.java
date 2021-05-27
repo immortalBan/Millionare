@@ -33,8 +33,9 @@ public class GameServiceImpl implements GameService {
         if (read(id) != null){
             Game newGame = new Game();
             newGame.setId(id);
+            System.out.println(game.getPoints());
             newGame.setPoints(game.getPoints());
-            newGame.setTimeCreated(game.getTimeCreated());
+            newGame.setTimeCreated(read(id).getTimeCreated());
 
             return true;
         } else {

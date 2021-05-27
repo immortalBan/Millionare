@@ -1,5 +1,6 @@
 package Millionare.Millionare.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,15 +13,18 @@ import javax.persistence.*;
 @Entity
 @Table(name = "game_questions")
 public class GameQuestion {
+
+    public GameQuestion(Long gameId, Long questionId){
+        this.gameId = gameId;
+        this.questionId = questionId;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name="game_id",nullable = false)
-    private Game game;
 
-    @ManyToOne
-    @JoinColumn(name="question_id",nullable = false)
-    private Question question;
+    private Long gameId;
+
+    private Long questionId;
 }

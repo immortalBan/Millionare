@@ -7,22 +7,18 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "games",uniqueConstraints = {@UniqueConstraint(columnNames={"id"})})
+@Table(name = "games", uniqueConstraints = {@UniqueConstraint(columnNames={"id"})})
 public class Game {
 
     public Game(Long points){
         this.points = points;
     }
-
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "time_created")
-    private Date timeCreated;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +28,12 @@ public class Game {
     @Column(name = "points", nullable = false)
     private Long points;
 
-    @ManyToOne
-    @JoinColumn(name="user_id",nullable = false)
-    private User user;
+    @OneToMany(mappedBy = "gameId")
+    private Set<GameQuestion> gameQuestions;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "time_created")
+    private Date timeCreated;
 
 }

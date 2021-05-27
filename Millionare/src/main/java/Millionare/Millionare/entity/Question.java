@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -49,4 +50,6 @@ public class Question {
     @Column(name = "correct_answer", nullable = false)
     private Long correctAnswer;
 
+    @OneToMany(mappedBy = "questionId")
+    private Set<GameQuestion> questionGames;
 }
